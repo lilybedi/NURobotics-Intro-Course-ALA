@@ -38,7 +38,7 @@ void forward(int carSpeed) {
  * This value is capped at 255 and passing in a higher value will
  * cap at 255
  */
-void swingTurnLeft(int carSpeed) {
+void swingTurnRight(int carSpeed) {
     digitalWrite(STBY, HIGH);
     digitalWrite(AIN1, HIGH);
     digitalWrite(BIN1, HIGH);
@@ -53,7 +53,7 @@ void swingTurnLeft(int carSpeed) {
  * This value is capped at 255 and passing in a higher value will
  * cap at 255
  */
-void swingTurnRight(int carSpeed) {
+void swingTurnLeft(int carSpeed) {
     digitalWrite(STBY, HIGH);
     digitalWrite(AIN1, HIGH);
     digitalWrite(BIN1, HIGH);
@@ -130,10 +130,14 @@ void setup() {
 // Track and follow a dark line
 void loop() {
     // Start by printing the sensor values - tune them to your environment
-    int threshold = 500;
-    if (analogRead(LTleftSensor) > threshold) {
-        Serial.println("Left Sensor is above threshold");
-    }
+    Serial.println(LTleftSensor)
+    Serial.println(LTrightSensor)
+    Serial.println(LTmiddleSensor)
+    delay(1000)
+    // int threshold = 500;
+    // if (analogRead(LTleftSensor) > threshold) {
+    //     Serial.println("Left Sensor is above threshold");
+    // }
     // Once you have tuned the sensors, you can use the movement functions
     // to move your robot!
 

@@ -127,9 +127,32 @@ void setup() {
     Serial.begin(9600);
 }
 
-// Track and follow a dark line
-void loop() {
-    // Start by printing the sensor values - tune them to your environment
+void turnNinetyDegrees() {
+    turnRight(110);
+    delay(655);
+    stop();
+}
+
+void square() {
+    for (int i = 0; i < 4; i++) {
+        if (i % 2 == 0) {        
+            forward(100);
+            delay(2000);
+            turnNinetyDegrees();
+        } else {
+            forward(50);
+            delay(4000);
+            turnNinetyDegrees();
+        }
+    }
+}
+
+void circle() {
+    swingTurnRight(100);
+    delay(250);
+}
+
+void printSensorValues() {
     Serial.println("L: ");
     Serial.println(analogRead(LTleftSensor));
     Serial.println("M: ");
@@ -137,9 +160,14 @@ void loop() {
     Serial.println("R: ");
     Serial.println(analogRead(LTrightSensor));
     delay(1000);
+}
 
+// Track and follow a dark line
+void loop() {
     // Once you have tuned the sensors, you can use the movement functions
     // to move your robot!
+    // square();
+    circle();
 
     // Challenge: Have your robot only track lines for 10 seconds, then stop
 
